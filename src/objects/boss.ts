@@ -22,7 +22,16 @@ export class Boss extends Enemy {
   checkDie(){
     if(this.hp==0){
       this.isDying = true;
-      this.hpText.text = "";
+      this.hpText.text = "You Win!";
+      this.scene.tweens.add({
+        targets: this.scene, 
+        ease: "Power1",
+        duration: 2000,
+        onComplete: ()=>{
+          this.scene.scene.start('MenuScene');
+          
+        }
+      })
     }
   }
   invertSpeed(){
