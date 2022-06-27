@@ -125,6 +125,9 @@ export class Mario extends Phaser.GameObjects.Sprite {
     }
     if(this.isFire == false){
       if(this.keys.get('UP').isUp){
+        // if(this.marioSize=="big"){
+        //   if 
+        // }
         this.isFire = true;
       }
     }

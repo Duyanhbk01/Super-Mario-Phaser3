@@ -113,18 +113,33 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.foregroundLayer);
     this.physics.add.collider(this.playerFire, this.foregroundLayer,(playerFire:marioFire)=>{
       if(playerFire.body.checkCollision.right||playerFire.body.checkCollision.up){
-        playerFire.stopfire();
-        this.playerFire.killAndHide(playerFire);
+        playerFire.play("boom")
+        this.add.tween({
+          targets: playerFire,
+          duration: 1000,
+          onComplete: () => {
+            playerFire.stopfire();
+            this.playerFire.killAndHide(playerFire);
+          }
+        })
       }
     });
     this.physics.add.collider(this.playerFire, this.enemies,(playerFire:marioFire,enemy:Goomba)=>{ 
-      playerFire.stopfire();
-      this.playerFire.killAndHide(playerFire);
+      playerFire.play("boom")
+      this.add.tween({
+        targets: playerFire,
+        duration: 1000,
+        onComplete: () => {
+          playerFire.stopfire();
+          this.playerFire.killAndHide(playerFire);
+        }
+      })
+     
       enemy.gotHitOnHead();
       this.add.tween({
         targets: enemy,
         props: { alpha: 0 },
-        duration: 1000,
+        duration: 1500,
         ease: 'Power0',
         yoyo: false,
         onComplete: function () {
@@ -134,8 +149,15 @@ export class GameScene extends Phaser.Scene {
     });
     this.physics.add.collider(this.playerFire, this.boxes,(playerFire:marioFire,boxes:Box)=>{
       if(playerFire.body.checkCollision.right||playerFire.body.checkCollision.up){
-        playerFire.stopfire();
-        this.playerFire.killAndHide(playerFire);
+        playerFire.play("boom")
+        this.add.tween({
+          targets: playerFire,
+          duration: 1000,
+          onComplete: () => {
+            playerFire.stopfire();
+            this.playerFire.killAndHide(playerFire);
+          }
+        })
       }
     });
     this.physics.add.collider(this.enemies, this.foregroundLayer);

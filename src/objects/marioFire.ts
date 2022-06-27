@@ -4,7 +4,7 @@ export default class marioFire extends Phaser.Physics.Arcade.Sprite {
     private mario : Mario;
     body: Phaser.Physics.Arcade.Body;
     constructor(scene : Phaser.Scene, key:any,mario : Mario) {
-      super(scene, mario.x+10, mario.y+30, key)
+      super(scene, mario.x+10, mario.y+30, key )
       this.setScale(0.2)
     }
   
@@ -46,6 +46,7 @@ export default class marioFire extends Phaser.Physics.Arcade.Sprite {
     this.setVisible(true)
     }
     stopfire() {
+      // this.play("boom")
       this.setActive(false)
       this.setVisible(false)
       
@@ -55,6 +56,7 @@ export default class marioFire extends Phaser.Physics.Arcade.Sprite {
   
     preUpdate() {
       if (this.x > this.scene.sys.canvas.width) {
+        // this.play("boom")
         this.stop()
       }
     }

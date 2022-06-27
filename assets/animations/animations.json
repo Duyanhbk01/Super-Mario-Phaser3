@@ -56,6 +56,17 @@
       "frameRate": 8
     },
     {
+      "key": "boom",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "boom",
+        "start": 5,
+        "end": 5
+      },
+      "repeat": -1,
+      "frameRate": 20
+    },
+    {
       "key": "flower",
       "frames": {
         "typeOfGeneration": "generateFrameNumbers",

@@ -41,6 +41,7 @@
           "frameHeight": 56
         }
       },
+
       {
         "type": "spritesheet",
         "key": "box",
@@ -57,6 +58,15 @@
         "frameConfig": {
           "frameWidth": 33,
           "frameHeight": 33
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "boom",
+        "url": "./assets/sprites/boom.png",
+        "frameConfig": {
+          "frameWidth": 65,
+          "frameHeight": 101
         }
       },
       {
