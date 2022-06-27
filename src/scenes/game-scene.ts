@@ -44,6 +44,7 @@ export class GameScene extends Phaser.Scene {
 
     // create our tilemap from Tiled JSON
     this.map = this.make.tilemap({ key: this.registry.get('level') });
+
     // this.map = this.make.tilemap({ key: "level3"});
     // add our tileset and layers to our tilemap
     this.tileset = this.map.addTilesetImage('tiles');
@@ -222,6 +223,8 @@ export class GameScene extends Phaser.Scene {
 
   update(): void {
     this.player.update(this.inProcess);
+    var level = this.registry.get('level')[5];
+    this.registry.set('world', level);
   }
 
   private loadObjectsFromTilemap(): void {

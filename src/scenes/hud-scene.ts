@@ -11,11 +11,11 @@ export class HUDScene extends Phaser.Scene {
   create(): void {
     this.textElements = new Map([
       ['LIVES', this.addText(0, 0, `MARIOx ${this.registry.get('lives')}`)],
-      ['WORLDTIME', this.addText(300, 0, `${this.registry.get('worldTime')}`)],
+      ['WORLDTIME', this.addText(150, 0, `${this.registry.get('worldTime')}`)],
       ['SCORE', this.addText(50, 30, `${this.registry.get('score')}`)],
-      ['COINS', this.addText(120, 30, `${this.registry.get('coins')}`)],
-      ['WORLD', this.addText(140, 30, `${this.registry.get('world')}`)],
-      ['TIME', this.addText(350, 30, `${this.registry.get('time')}`)]
+      ['COINS', this.addText(110, 30, `${this.registry.get('coins')}`)],
+      ['WORLD', this.addText(170, 30, `${this.registry.get('world')}`)],
+      ['TIME', this.addText(250, 30, `${this.registry.get('time')}`)]
     ]);
 
     // create events
