@@ -65,8 +65,8 @@
         "key": "boom",
         "url": "./assets/sprites/boom.png",
         "frameConfig": {
-          "frameWidth": 65,
-          "frameHeight": 101
+          "frameWidth": 35,
+          "frameHeight": 42
         }
       },
       {
@@ -100,6 +100,24 @@
         "type": "spritesheet",
         "key": "goomba",
         "url": "./assets/sprites/goomba.png",
+        "frameConfig": {
+          "frameWidth": 200,
+          "frameHeight": 200
+        }
+      },
+      {
+        "type": "image",
+        "key": "fireboss",
+        "url": "./assets/sprites/fireboss.png",
+        "frameConfig": {
+          "frameWidth": 100,
+          "frameHeight": 100
+        }
+      },
+      {
+        "type": "image",
+        "key": "boss",
+        "url": "./assets/sprites/boss.png",
         "frameConfig": {
           "frameWidth": 200,
           "frameHeight": 200

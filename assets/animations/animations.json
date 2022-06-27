@@ -60,11 +60,11 @@
       "frames": {
         "typeOfGeneration": "generateFrameNumbers",
         "key": "boom",
-        "start": 5,
-        "end": 5
+        "start": 0,
+        "end": 4
       },
       "repeat": -1,
-      "frameRate": 20
+      "frameRate": 3
     },
     {
       "key": "flower",

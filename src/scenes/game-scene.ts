@@ -1,4 +1,5 @@
 import { Boss } from '../objects/boss';
+import bossFire from '../objects/bossfire';
 import { Box } from '../objects/box';
 import { Brick } from '../objects/brick';
 import { Collectible } from '../objects/collectible';
@@ -85,7 +86,7 @@ export class GameScene extends Phaser.Scene {
     });
 
     this.bosss = this.add.group({
-      /*classType: Brick,*/
+      classType: Boss,
       runChildUpdate: true
     });
 
@@ -161,6 +162,7 @@ export class GameScene extends Phaser.Scene {
         })
       }
     });
+    this.physics.add.collider(this.bosss, this.foregroundLayer);
     this.physics.add.collider(this.enemies, this.foregroundLayer);
     this.physics.add.collider(this.enemies, this.enemies, (ene1 : Goomba, ene2: Goomba) =>{ ene1.invertSpeed();  ene2.invertSpeed();});
     this.physics.add.collider(this.enemies, this.boxes);
@@ -175,6 +177,47 @@ export class GameScene extends Phaser.Scene {
       null,
       this
     );
+
+    this.physics.add.overlap(
+      this.player,
+      this.bosss,
+      this.handlePlayerEnemyOverlap,
+      null,
+      this
+    );
+    this.bosss.getChildren().forEach((boss:Boss) => {
+      this.physics.add.overlap(
+        this.player,
+        boss.bossFire,
+        this.handlePlayerEnemyOverlap,
+        null,
+        this
+      );
+    })
+    this.bosss.getChildren().forEach((boss:Boss) => {
+      this.physics.add.collider(
+        this.playerFire,
+        boss.bossFire,
+        (fire:bossFire) =>{
+          fire.stopfire();
+          boss.bossFire.killAndHide(fire)
+        },
+        null,
+        this
+      );
+    })
+    this.physics.add.collider(
+      this.playerFire,
+      this.bosss,
+      (playerFire:marioFire,boss:Boss)=>{
+        playerFire.stopfire();
+        this.playerFire.killAndHide(playerFire);
+        boss.hp -=100;
+      },
+      null,
+      this
+    );
+
 
     this.physics.add.overlap(
       this.player,
@@ -274,7 +317,7 @@ export class GameScene extends Phaser.Scene {
             scene: this,
             x: object.x,
             y: object.y,
-            texture: 'goomba'
+            texture: 'boss'
           })
         );
       }
@@ -450,7 +493,6 @@ export class GameScene extends Phaser.Scene {
       (_player.getKeys().get('RIGHT').isDown &&
         _portal.getPortalDestination().dir === 'right')
     ) {
-
         if(_portal.name.slice(0, 6) == (this.registry.get('level'))){
           console.log("flash")
           if(this.inProcess == false){
